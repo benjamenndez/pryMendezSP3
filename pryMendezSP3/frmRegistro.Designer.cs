@@ -37,6 +37,7 @@
             cmbOrigen = new ComboBox();
             btnIngresar = new Button();
             gbDatosRepuestos = new GroupBox();
+            mtbPrecio = new MaskedTextBox();
             mtbNumero = new MaskedTextBox();
             txtDescripcion = new TextBox();
             lblMarcaConsulta = new Label();
@@ -45,12 +46,11 @@
             rbNacional = new RadioButton();
             rbImportado = new RadioButton();
             gbConsultar = new GroupBox();
-            btnOrigenConsultar = new Button();
-            btnMarcaConsultar = new Button();
+            btnConsultar = new Button();
             tbcDatos = new TabControl();
             tbRepuestos = new TabPage();
             tbConsultas = new TabPage();
-            mtbPrecio = new MaskedTextBox();
+            lstDatos = new ListBox();
             gbDatosRepuestos.SuspendLayout();
             gbConsultar.SuspendLayout();
             tbcDatos.SuspendLayout();
@@ -121,17 +121,17 @@
             cmbOrigen.Location = new Point(128, 96);
             cmbOrigen.Name = "cmbOrigen";
             cmbOrigen.Size = new Size(121, 23);
-            cmbOrigen.TabIndex = 6;
+            cmbOrigen.TabIndex = 1;
             cmbOrigen.SelectedIndexChanged += cmbOrigen_SelectedIndexChanged;
             // 
             // btnIngresar
             // 
-            btnIngresar.BackColor = SystemColors.InactiveCaption;
+            btnIngresar.BackColor = SystemColors.GradientActiveCaption;
             btnIngresar.Enabled = false;
             btnIngresar.Location = new Point(174, 303);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(75, 23);
-            btnIngresar.TabIndex = 7;
+            btnIngresar.TabIndex = 4;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
@@ -146,6 +146,15 @@
             gbDatosRepuestos.TabStop = false;
             gbDatosRepuestos.Text = "Datos De Repuestos";
             // 
+            // mtbPrecio
+            // 
+            mtbPrecio.Location = new Point(108, 210);
+            mtbPrecio.Mask = "99999";
+            mtbPrecio.Name = "mtbPrecio";
+            mtbPrecio.Size = new Size(100, 23);
+            mtbPrecio.TabIndex = 0;
+            mtbPrecio.ValidatingType = typeof(int);
+            // 
             // mtbNumero
             // 
             mtbNumero.Enabled = false;
@@ -153,7 +162,7 @@
             mtbNumero.Mask = "99999";
             mtbNumero.Name = "mtbNumero";
             mtbNumero.Size = new Size(100, 23);
-            mtbNumero.TabIndex = 9;
+            mtbNumero.TabIndex = 2;
             mtbNumero.ValidatingType = typeof(int);
             mtbNumero.MaskInputRejected += mtbNumero_MaskInputRejected;
             // 
@@ -163,7 +172,7 @@
             txtDescripcion.Location = new Point(128, 189);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(100, 23);
-            txtDescripcion.TabIndex = 10;
+            txtDescripcion.TabIndex = 3;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
             // lblMarcaConsulta
@@ -178,7 +187,7 @@
             // lblOrigenConsulta
             // 
             lblOrigenConsulta.AutoSize = true;
-            lblOrigenConsulta.Location = new Point(66, 127);
+            lblOrigenConsulta.Location = new Point(46, 104);
             lblOrigenConsulta.Name = "lblOrigenConsulta";
             lblOrigenConsulta.Size = new Size(43, 15);
             lblOrigenConsulta.TabIndex = 12;
@@ -196,7 +205,7 @@
             // rbNacional
             // 
             rbNacional.AutoSize = true;
-            rbNacional.Location = new Point(159, 123);
+            rbNacional.Location = new Point(133, 104);
             rbNacional.Name = "rbNacional";
             rbNacional.Size = new Size(72, 19);
             rbNacional.TabIndex = 14;
@@ -207,7 +216,7 @@
             // rbImportado
             // 
             rbImportado.AutoSize = true;
-            rbImportado.Location = new Point(159, 148);
+            rbImportado.Location = new Point(133, 129);
             rbImportado.Name = "rbImportado";
             rbImportado.Size = new Size(81, 19);
             rbImportado.TabIndex = 15;
@@ -217,34 +226,27 @@
             // 
             // gbConsultar
             // 
-            gbConsultar.Controls.Add(btnOrigenConsultar);
-            gbConsultar.Controls.Add(btnMarcaConsultar);
+            gbConsultar.Controls.Add(rbImportado);
+            gbConsultar.Controls.Add(lblOrigenConsulta);
+            gbConsultar.Controls.Add(rbNacional);
+            gbConsultar.Controls.Add(lstDatos);
+            gbConsultar.Controls.Add(btnConsultar);
             gbConsultar.Location = new Point(20, 19);
             gbConsultar.Name = "gbConsultar";
-            gbConsultar.Size = new Size(233, 268);
+            gbConsultar.Size = new Size(259, 335);
             gbConsultar.TabIndex = 16;
             gbConsultar.TabStop = false;
             gbConsultar.Text = "Consultar";
             // 
-            // btnOrigenConsultar
+            // btnConsultar
             // 
-            btnOrigenConsultar.BackColor = SystemColors.InactiveCaption;
-            btnOrigenConsultar.Location = new Point(58, 226);
-            btnOrigenConsultar.Name = "btnOrigenConsultar";
-            btnOrigenConsultar.Size = new Size(75, 23);
-            btnOrigenConsultar.TabIndex = 9;
-            btnOrigenConsultar.Text = "Origen";
-            btnOrigenConsultar.UseVisualStyleBackColor = false;
-            // 
-            // btnMarcaConsultar
-            // 
-            btnMarcaConsultar.BackColor = SystemColors.InactiveCaption;
-            btnMarcaConsultar.Location = new Point(139, 226);
-            btnMarcaConsultar.Name = "btnMarcaConsultar";
-            btnMarcaConsultar.Size = new Size(75, 23);
-            btnMarcaConsultar.TabIndex = 8;
-            btnMarcaConsultar.Text = "Marca";
-            btnMarcaConsultar.UseVisualStyleBackColor = false;
+            btnConsultar.BackColor = SystemColors.InactiveCaption;
+            btnConsultar.Location = new Point(139, 295);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.TabIndex = 8;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = false;
             // 
             // tbcDatos
             // 
@@ -254,7 +256,7 @@
             tbcDatos.Name = "tbcDatos";
             tbcDatos.SelectedIndex = 0;
             tbcDatos.Size = new Size(310, 400);
-            tbcDatos.TabIndex = 17;
+            tbcDatos.TabIndex = 0;
             // 
             // tbRepuestos
             // 
@@ -279,10 +281,7 @@
             // 
             // tbConsultas
             // 
-            tbConsultas.Controls.Add(rbImportado);
             tbConsultas.Controls.Add(lblMarcaConsulta);
-            tbConsultas.Controls.Add(rbNacional);
-            tbConsultas.Controls.Add(lblOrigenConsulta);
             tbConsultas.Controls.Add(cmbMarcaConsultar);
             tbConsultas.Controls.Add(gbConsultar);
             tbConsultas.Location = new Point(4, 24);
@@ -293,21 +292,21 @@
             tbConsultas.Text = "Consultas";
             tbConsultas.UseVisualStyleBackColor = true;
             // 
-            // mtbPrecio
+            // lstDatos
             // 
-            mtbPrecio.Location = new Point(108, 210);
-            mtbPrecio.Mask = "99999";
-            mtbPrecio.Name = "mtbPrecio";
-            mtbPrecio.Size = new Size(100, 23);
-            mtbPrecio.TabIndex = 0;
-            mtbPrecio.ValidatingType = typeof(int);
+            lstDatos.FormattingEnabled = true;
+            lstDatos.ItemHeight = 15;
+            lstDatos.Location = new Point(19, 161);
+            lstDatos.Name = "lstDatos";
+            lstDatos.Size = new Size(195, 124);
+            lstDatos.TabIndex = 9;
             // 
             // frmRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(490, 499);
+            ClientSize = new Size(462, 495);
             Controls.Add(tbcDatos);
             Name = "frmRegistro";
             Text = "Venta De Repuestos";
@@ -315,6 +314,7 @@
             gbDatosRepuestos.ResumeLayout(false);
             gbDatosRepuestos.PerformLayout();
             gbConsultar.ResumeLayout(false);
+            gbConsultar.PerformLayout();
             tbcDatos.ResumeLayout(false);
             tbRepuestos.ResumeLayout(false);
             tbRepuestos.PerformLayout();
@@ -342,11 +342,11 @@
         private RadioButton rbNacional;
         private RadioButton rbImportado;
         private GroupBox gbConsultar;
-        private Button btnMarcaConsultar;
-        private Button btnOrigenConsultar;
+        private Button btnConsultar;
         private TabControl tbcDatos;
         private TabPage tbRepuestos;
         private TabPage tbConsultas;
         private MaskedTextBox mtbPrecio;
+        private ListBox lstDatos;
     }
 }
